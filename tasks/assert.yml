@@ -21,13 +21,6 @@
     mongo_secondary: "{{ mongo_replication_role == 'secondary' }}"
     mongo_arbiter: "{{ mongo_replication_role == 'arbiter' }}"
 
-- name: assert | several items for a single host
-  assert:
-    that:
-      - mongo_replication_role == ''
-      - mongo_security.keyFile is not defined
-  when: host_count == '1'
-
 - name: assert | that passwords are changed
   assert:
     that:
